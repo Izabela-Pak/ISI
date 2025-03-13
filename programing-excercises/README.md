@@ -390,7 +390,6 @@ if __name__ == '__main__':
 ![Task-18](./screenshots/task-18.png)
 
 [skrypt18-25101.py](./main.py)
-import funkcje
 
 # TASK-19
 ```
