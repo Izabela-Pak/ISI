@@ -498,3 +498,177 @@ if __name__ == '__main__':
 ![Task-21](./screenshots/task-21.png)
 
 [skrypt21-25101.py](./skrypt21-25101.py)
+
+# TASK-22
+```
+def max_word(words):
+    max_length=""
+    for slowo in words:
+        if len(max_length) < len(slowo):
+            max_length = slowo
+    return max_length
+
+def ten_length(words):
+    same_len= []
+    for slowo in words:
+        if len(slowo)==10:
+            same_len.append(slowo)
+    return same_len
+
+def spr_pliku():
+    with open("wordlist_10000.txt", "r") as plik:
+        linie = plik.readlines()
+    max = max_word(linie)
+    ten_len = ten_length(linie)
+
+    print(max)
+    print(ten_len)
+
+if __name__ == '__main__':
+    spr_pliku()
+```
+![Task-22](./screenshots/task-22.png)
+
+[skrypt22-25101.py](./skrypt22-25101.py)
+
+# TASK-23 
+```
+import random
+import string
+
+def hasla():
+    #Utworzenie tablicy wygenerowanych losowo haseł
+    slowa = [''.join(random.choices(string.ascii_letters + string.digits, k=6)) for _ in range(10000)]
+
+    with open("password.txt", "w") as plik:
+        for litera in slowa:
+            plik.write(litera + "\n")
+
+if __name__ == '__main__':
+    hasla()
+```
+![Task-23](./screenshots/task-23.png)
+
+[skrypt23-25101.py](./skrypt23-25101.py)
+
+# TASK-24
+```
+import random, csv
+
+def plik_csv():
+    adresIP = "172.30.2."
+    lista = []
+
+    for i in range(1,101):
+        adres = adresIP + str(i)
+        nazwa = "P" + str(i)
+        lista.append([nazwa, adres])
+
+    #newline="" zapobiega dodawaniu pustych wierszy
+    with open("pc.csv", mode="w", newline="") as plik:
+        writer = csv.writer(plik)
+        writer.writerow(["pc_name", "ip"]) #Nagłówki
+        writer.writerows(lista)
+
+    #Odczytanie zapisanego pliku csv i wyświetlenie jego zawartości
+    with open("pc.csv", mode="r", newline="") as plik:
+        reader = csv.DictReader(plik)
+        for wiersz in reader:
+            print(wiersz)
+
+if __name__ == '__main__':
+    plik_csv()
+```
+![Task-24](./screenshots/task-24.png)
+
+[skrypt24-25101.py](./skrypt24-25101.py)
+
+# TASK-25
+```
+#Do działania tego należało zainstalować "pip install beautifulsoup4" oraz "pip install requests"
+#BeautifulSoup służy do analizowania (parsowania) gotowego HTML
+#Do pobrania treści strony służy biblioteka requests.
+
+import requests
+from bs4 import BeautifulSoup
+
+def pobieranie_linkow(url: str)-> str:
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    for link in soup.find_all('a'):
+        print(link.get('href'))
+
+if __name__ == '__main__':
+    url = 'https://www.empik.com/nie-ma-tego-zlego-mortka-marcin,p1257181764,ksiazka-p'
+    pobieranie_linkow(url)
+```
+![Task-25](./screenshots/task-25.png)
+
+[skrypt25-25101.py](./skrypt25-25101.py)
+
+# TASK-26
+```
+# Należało pobrać chromeDriver 
+# Używane komendy:
+#pip install selenium
+#pip freeze > requirements.txt
+import csv
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
+
+class Home():
+
+    def __init__(self, header_name, price, price_m2):
+        self.header_name = header_name
+        self.price = price
+        self.price_m2 = price_m2
+
+    def return_data(self):
+        return {
+            'header_name': self.header_name,
+            'price': self.price,
+            'price_for_m2': self.price_m2
+        }
+
+def pobranie_postow():
+    service = Service('./chromedriver.exe')
+    driver = webdriver.Chrome(service=service)
+    driver.get('https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/pomorskie/gdynia/gdynia/gdynia?priceMax=600000&viewType=listing')
+
+    post_loaded = expected_conditions.presence_of_element_located((By.TAG_NAME, 'article'))
+    WebDriverWait(driver, 15).until(post_loaded)
+
+    slownik = {}
+    i = 1
+
+    for post in driver.find_elements(By.TAG_NAME, 'article'):
+        tytul = post.find_element(By.CLASS_NAME, 'css-16vl3c1').text
+        cena = post.find_element(By.CLASS_NAME, 'css-afwkhs').text
+        cena_m2 = post.find_element(By.XPATH, ".//dt[text()='Cena za metr kwadratowy']/following-sibling::dd[1]/span").text
+        
+        home = Home(tytul, cena, cena_m2)
+        slownik[f'oferta_{i}'] = home
+        i += 1
+
+    with open("home.csv", mode="w", newline="", encoding="utf-8") as plik:
+        writer = csv.writer(plik)
+        writer.writerow(["header_name", "price", "price_m2"]) #Nagłówki
+        
+        #Wypisanie elementów słownika
+        for key, oferta in slownik.items():
+            print(key, oferta.return_data())
+            writer.writerow([oferta.header_name, oferta.price, oferta.price_m2])
+
+
+    driver.stop_client()
+
+if __name__ == '__main__':
+    pobranie_postow()
+```
+![Task-26](./screenshots/task-26.png)
+
+[skrypt26-25101.py](./skrypt26-25101.py)
