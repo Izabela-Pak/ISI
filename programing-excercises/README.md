@@ -26,9 +26,11 @@ if __name__ == '__main__':
 ```
 
 ![Task-01](./screenshots/task-01.png)
+
 [skrypt01-25101.py](./skrypt01-25101.py)
 
-TASK-02
+# TASK-02
+```
 def spr(dane: str) -> str:
     if len(dane) >= 2 and all(znak.isdigit() for znak in dane):
         return True
@@ -41,11 +43,13 @@ if __name__ == '__main__':
         print("Ciąg jest liczbą")
     else:
         print("Ciąg nie jest liczbą")
+```
+![Task-02](./screenshots/task-02.png)
 
-[Task-02](./screenshots/task-02.png)
 [skrypt02-25101.py](./skrypt02-25101.py)
 
-TASK-03
+# TASK-03
+```
 def szukanie():
     dane = "To jest długi ciąg znaków"
     #Wyszukjemy wpierw literę, potem wyraz, a na koniec coś czego nam nie znajdzie
@@ -59,11 +63,13 @@ def szukanie():
 
 if __name__ == '__main__':
     szukanie()
+```
+![Task-03](./screenshots/task-03.png)
 
-[Task-03](./screenshots/task-03.png)
 [skrypt03-25101.py](./skrypt03-25101.py)
 
-TASK-04
+# TASK-04
+```
 def szukanie(dane: str, szukana: str) -> str:
     lista_wyrazow = dane.split()
     indeksy = [i for i, wyraz in enumerate(lista_wyrazow) if wyraz == szukana]
@@ -76,11 +82,13 @@ if __name__ == '__main__':
     dane = "banan jabłko gruszka borówki truskawki gruszka pomarańcza jabłko gruszka"
     szukana = "jabłko"
     szukanie(dane, szukana)
+```
+![Task-04](./screenshots/task-04.png)
 
-[Task-04](./screenshots/task-04.png)
 [skrypt04-25101.py](./skrypt04-25101.py)
 
-TASK-05
+# TASK-05
+```
 import math
 #Pierwszy sposób
 def pierwszy_sposob():
@@ -98,11 +106,13 @@ def drugi_sposob():
 if __name__ == '__main__':
     pierwszy_sposob()
     drugi_sposob()
+```
+![Task-05](./screenshots/task-05.png)
 
-[Task-05](./screenshots/task-05.png)
 [skrypt05-25101.py](./skrypt05-25101.py)
 
-TASK-06
+# TASK-06
+```
 import string
 import random
 
@@ -116,11 +126,13 @@ def slownik(nazwa: str) -> str:
 if __name__ == '__main__':
     nazwa_slownika = "25101"
     slownik(nazwa_slownika)
+```
+![Task-06](./screenshots/task-06.png)
 
-[Task-06](./screenshots/task-06.png)
 [skrypt06-25101.py](./skrypt06-25101.py)
 
-TASK-07
+# TASK-07
+```
 import sys
 sys.path.append("utils")
 import obliczenia
@@ -131,7 +143,8 @@ if __name__ == '__main__':
     obliczenia.sin_cos(90)
     obliczenia.odległosc_euklidesowa([-1,4], [1,2])
     obliczenia.logarytm(5,10)
+```
+![Task-07](./screenshots/task-07.png)
 
-[Task-07](./screenshots/task-07.png)
 [skrypt07-25101.py](./skrypt07-25101.py)
 
