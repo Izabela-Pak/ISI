@@ -339,3 +339,163 @@ if __name__ == '__main__':
 ![Task-15](./screenshots/task-15.png)
 
 [skrypt15-25101.py](./skrypt15-25101.py)
+
+# TASK-16
+```
+def potega(a):
+    print(a**3)
+
+if __name__ == '__main__':
+    potega(3)
+```
+![Task-16](./screenshots/task-16.png)
+
+[skrypt16-25101.py](./skrypt16-25101.py)
+# TASK-17
+```
+class Dog:
+    def __init__(self, name, age, coat_color):
+        self.name = name
+        self.age = age
+        self.coat_color = coat_color
+
+    def sound(self):
+        print(self.name, " is barking!")
+
+if __name__ == '__main__':
+    reksio = Dog("Reksio", 3, "brązowy")
+    tofik = Dog("Tofik", 6, "czarny")
+    fafik = Dog("Fafik", 1, "biały")
+
+    reksio.sound()
+    tofik.sound()
+    fafik.sound()
+
+```
+![Task-17](./screenshots/task-17.png)
+
+[skrypt17-25101.py](./skrypt17-25101.py)
+# TASK-18
+```
+import funkcje
+
+if __name__ == '__main__':
+    funkcje.dodawanie(60,4)
+    funkcje.odejmowanie(54,17)
+    funkcje.mnożenie(10,3)
+    funkcje.dzielenie(25,5)
+    funkcje.modulo(10,3)
+
+```
+![Task-18](./screenshots/task-18.png)
+
+[skrypt18-25101.py](./main.py)
+import funkcje
+
+# TASK-19
+```
+def palindrom(dane:str) -> str:
+    check_dane = dane.replace(" ", "")
+    odwrocone = check_dane[::-1]
+
+    if(check_dane==odwrocone):
+        print("Wyraz/zdanie jest palindromem")
+    else:
+        print("Wyraz/zdanie nie jest palindromem")
+
+if __name__ == '__main__':
+    dane = input("Podaj wyraz lub zdanie: ")
+    palindrom(dane)
+
+```
+![Task-19](./screenshots/task-19.png)
+
+[skrypt19-25101.py](./skrypt19-25101.py)
+
+# TASK-20
+```
+import random
+
+def gra():
+    liczba = random.randint(1,100)
+
+    while True:
+        podana_liczba = int(input("Podaj liczbę z przedziału od 1 do 100: "))
+
+        if podana_liczba == liczba:
+            print("Gratulację! Udało Ci się zgadnąć!")
+            break
+        elif podana_liczba < liczba:
+            print("Podana liczba jest za mała! Spróbuj ponownie")
+        else:
+            print("Podana liczba jest za duża! Spróbuj ponownie")
+
+if __name__ == '__main__':
+    gra()
+
+```
+![Task-20](./screenshots/task-20.png)
+
+[skrypt20-25101.py](./skrypt20-25101.py)
+
+# TASK-21
+```
+class Animal:
+    def __init__(self, name, age, sex):
+        self.name = name
+        self.age = age
+        self.sex = sex
+
+    def sound():
+        print("Dźwięk zwierzęcia")
+
+    def info(self):
+        print("Informacje o zwierzęciu: \n Nazwa: ", self.name, "\n Wiek: ", self.age,"\n Płeć: ",self.sex)
+
+class Dog(Animal):
+    def __init__(self, name, age, sex, breed):
+        super().__init__(name, age, sex)
+        self.breed = breed
+
+    def sound():
+        print("Hau Hau")
+
+    def optional_info(self):
+        print("Rasa: ", self.breed)
+
+class Cat(Animal):
+    def __init__(self, name, age, sex, breed):
+        super().__init__(name, age, sex)
+        self.breed = breed
+
+    def sound():
+        print("Miau miau")
+
+    def optional_info(self):
+        print("Rasa: ", self.breed)
+
+class Fox(Animal):
+    def __init__(self, name, age, sex):
+        super().__init__(name, age, sex)
+
+    def sound():
+        print("Waaaaah")
+
+
+if __name__ == '__main__':
+    pies = Dog("Żaba", 7, "samica", "owczarek niemiecki")
+    pies.info()
+    pies.optional_info()
+    pies.sound
+    kot = Cat("Arya", 4.5, "samica", "dachowiec")
+    kot.info()
+    kot.optional_info()
+    kot.sound
+    lis = Fox("Rabuś", 4, "samiec")
+    lis.info()
+    lis.sound
+
+```
+![Task-21](./screenshots/task-21.png)
+
+[skrypt21-25101.py](./skrypt21-25101.py)
