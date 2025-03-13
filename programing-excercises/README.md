@@ -1,5 +1,5 @@
 # TASK-01
-` def spr1(dane: str) -> str:
+``` def spr1(dane: str) -> str:
    if dane and isinstance(dane[0], str) and dane[0].isdigit():
       return True
    else:
@@ -22,9 +22,10 @@ if __name__ == '__main__':
    if spr2(dane):
       print("Znak jest liczbą")
    else:
-      print("Znak nie jest liczbą") `
+      print("Znak nie jest liczbą")
+```
 
-[Task-01](./screenshots/task-01.png)
+![Task-01](./screenshots/task-01.png)
 [skrypt01-25101.py](./skrypt01-25101.py)
 
 TASK-02
