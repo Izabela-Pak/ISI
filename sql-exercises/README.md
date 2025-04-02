@@ -60,3 +60,25 @@ WHERE body_mass_g < 3000
 ```
 
 ![exercise-05](./screenshots/exercise-05.png)
+
+
+# EXCERCISE-06
+> Use the not operator to select penguins that are not Gentoos.
+
+```
+SELECT * FROM penguins 
+WHERE species != "Gentoo"
+```
+
+![exercise-06](./screenshots/exercise-06.png)
+
+# EXCERCISE-07
+> SQL's or is an inclusive or: it succeeds if either or both conditions are true. SQL does not provide a specific operator for exclusive or, which is true if either but not both conditions are true, but the same effect can be achieved using and, or, and not. Write a query to select penguins that are female or on Torgersen Island but not both.
+
+```
+SELECT * FROM penguins 
+WHERE (island="Torgersen" AND sex !="FEMALE") OR (island!="Torgersen" AND sex="FEMALE")
+```
+
+![exercise-07](./screenshots/exercise-07.png)
+
