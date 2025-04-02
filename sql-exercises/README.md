@@ -7,7 +7,7 @@ SELECT sex,body_mass_g FROM little_penguins
 ORDER BY body_mass_g DESC
 ```
 
-![excercise-01](./screenshots/excercise-01.png)
+![excercise-01](./screenshots/exercise-01.png)
 
 # EXCERCISE-02
 
@@ -19,5 +19,5 @@ limit 11
 OFFSET 49
 ```
 
-![excercise-02](./screenshots/excercise-02.png)
+![excercise-02](./screenshots/exercise-02.png)
 
