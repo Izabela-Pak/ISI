@@ -82,3 +82,16 @@ WHERE (island="Torgersen" AND sex !="FEMALE") OR (island!="Torgersen" AND sex="F
 
 ![exercise-07](./screenshots/exercise-07.png)
 
+# EXCERCISE-08
+> Write a single query that calculates and returns:
+> A column called what_where that has the species and island of each penguin separated by a single space.
+> A column called bill_ratio that has the ratio of bill length to bill depth.
+
+```
+SELECT  
+ species || ' ' || island
+,bill_length_mm / bill_depth_mm as bill_ratio
+FROM penguins
+```
+
+![exercise-08](./screenshots/exercise-08.png)
