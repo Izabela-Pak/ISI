@@ -95,3 +95,83 @@ FROM penguins
 ```
 
 ![exercise-08](./screenshots/exercise-08.png)
+
+
+# EXCERCISE-09
+> Use SQLite's .nullvalue command to change the printed representation of null to the string null and then re-run the previous query. When will displaying null as null be easier to understand? When might it be misleading?
+
+```
+.nullvalue null
+SELECT species || ' ' || island ,bill_length_mm / bill_depth_mm as bill_ratio FROM penguins;
+```
+
+![exercise-09](./screenshots/exercise-09.png)
+
+# EXCERCISE-10
+> Write a query to find penguins whose body mass is known but whose sex is not.
+
+```
+SELECT * FROM penguins
+WHERE body_mass_g is NOT NULL AND sex is NULL
+```
+
+![exercise-10](./screenshots/exercise-10.png)
+
+# EXCERCISE-11
+> Write another query to find penguins whose sex is known but whose body mass is not.
+
+```
+SELECT * FROM penguins
+WHERE body_mass_g is NULL AND sex is Not NULL
+```
+
+![exercise-11](./screenshots/exercise-11.png)
+
+# EXCERCISE-12
+> What is the average body mass of penguins that weight more than 3000.0 grams?
+
+```
+SELECT AVG(body_mass_g) as average_body_mass
+FROM (SELECT body_mass_g FROM penguins WHERE body_mass_g > 3000)
+```
+
+![exercise-12](./screenshots/exercise-12.png)
+
+# EXCERCISE-13
+> How many different body masses are in the penguins dataset?
+
+```
+SELECT COUNT(body_mass_g)
+FROM(SELECT DISTINCT body_mass_g FROM penguins WHERE body_mass_g )
+```
+
+![exercise-13](./screenshots/exercise-13.png)
+
+# EXCERCISE-14
+> Write a query that shows each distinct body mass in the penguin dataset and the number of penguins that weigh that much.
+
+```
+SELECT DISTINCT COUNT(body_mass_g), body_mass_g
+FROM penguins
+GROUP BY body_mass_g
+```
+
+![exercise-14](./screenshots/exercise-14.png)
+
+# EXCERCISE-15
+> Write a query that uses filter to calculate the average body masses of heavy penguins (those over 4500 grams) and light penguins (those under 3500 grams) simultaneously. Is it possible to do this using where instead of filter?
+
+```
+select
+    round(
+        avg(body_mass_g) filter (where body_mass_g > 4500.0),
+        1
+    ) as heavy_penguins,
+	round(
+        avg(body_mass_g) filter (where body_mass_g < 3500.0),
+        1
+    ) as light_penguins
+from penguins
+```
+
+![exercise-15](./screenshots/exercise-15.png)
