@@ -175,3 +175,86 @@ from penguins
 ```
 
 ![exercise-15](./screenshots/exercise-15.png)
+
+# EXCERCISE-16
+> Using an in-memory database, define a table called notes with two text columns author and note and then add three or four rows. Use a query to check that the notes have been stored and that you can (for example) select by author name.
+
+```
+sqlite3 :memory:
+sqlite> create table notes( author text not null, note text not null);
+sqlite> insert into notes values ('Staszek', 'notatka 1'), ('Dominik', 'notatka 2'), ('Grażyna', 'notatka 3'), ('Maja', 'notatka 4');
+sqlite> SELECT * FROM notes;
+sqlite> SELECT note FROM notes WHERE author='Maja';
+```
+
+![exercise-16](./screenshots/exercise-16.png)
+
+# EXCERCISE-17
+> What happens if you try to delete rows that don't exist (e.g., all entries in work that refer to juna)?
+
+```
+DELETE FROM notes WHERE author='Grześ';
+```
+
+![exercise-17](./screenshots/exercise-17.png)
+
+# EXCERCISE-18
+> Re-create the notes table in an in-memory database and then use SQLite's .output and .dump commands to save the database to a file called notes.sql. Inspect the contents of this file: how has your data been stored?
+
+```
+sqlite> .output notes.sql
+sqlite> .dump
+sqlite> .output stdout
+```
+
+![exercise-18](./screenshots/exercise-18.png)
+
+# EXCERCISE-19
+> Start a fresh SQLite session and load notes.sql using the .read command. Inspect the database using .schema and select *: is everything as you expected?
+
+```
+sqlite> .read notes.sql
+sqlite> SELECT * FROM notes
+```
+
+![exercise-19](./screenshots/exercise-19.png)
+
+# EXCERCISE-20
+> Re-create the notes table in an in-memory database once again and use SQLite's .backup command to save it to a file called notes.db. Inspect this file using od -c notes.db or a text editor that can handle binary data: how has your data been stored?
+
+```
+sqlite> .backup notes.db
+```
+
+![exercise-20](./screenshots/exercise-20.png)
+
+# EXCERCISE-21
+> Start a fresh SQLite session and load notes.db using the .restore command. Inspect the database using .schema and select *: is everything as you expected?
+
+```
+.restore notes.db
+```
+
+![exercise-21](./screenshots/exercise-21.png)
+
+# EXCERCISE-22
+> Re-run the query shown above using where job = name instead of the full table.name notation. Is the shortened form easier or harder to read and more or less likely to cause errors?
+
+```
+select *
+from work, job
+where work.job = job.name
+```
+
+![exercise-22](./screenshots/exercise-22.png)
+
+# EXCERCISE-23
+> Find the least time each person spent on any job. Your output should show that mik and po each spent 0.5 hours on some job. Can you find a way to show the name of the job as well using the SQL you have seen so far?
+
+```
+select work.person, MIN(job.billable), job.name
+from work join job on work.job = job.name
+group by work.person
+```
+
+![exercise-23](./screenshots/exercise-23.png)
